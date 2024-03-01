@@ -1,0 +1,27 @@
+.cardWrapper {
+    background-color: #ffffff;
+    border-radius: 8px;
+    color: #141414;
+    transition: all 0.3s ease-in-out;
+    width: 24%;
+    &:hover {
+        transform: scale(1.1);
+        .info {
+            visibility: visible;
+            opacity: 1;
+        }
+        span {
+            display: none;
+        }
+    }
+    .info {
+        background-color: #fff;
+        visibility: hidden;
+        opacity: 0;
+        // display: none;
+        transition: visibility 0s, opacity 0.5s linear;
+    }
+}
+
+.dataList {
+}
