@@ -1,58 +1,108 @@
-interface PointWH {
-    width: string;
-    height: string;
-}
+import React from 'react';
+import { IProps } from '../../constants';
 
-const D01 = ({ width, height }: PointWH) => {
-    return (
-        <svg
-            // xmlns="http://www.w3.org/2000/svg"
-            // xmlns:xlink="http://www.w3.org/1999/xlink"
-            // style="isolation:isolate"
-            viewBox="0 0 512 512"
-            width={width}
-            height={height}
-        >
-            <g id="null">
-                <path
-                    d=" M 256 379.586 C 324.414 379.586 379.586 323.972 379.586 256 C 379.586 188.028 323.972 132.414 256 132.414 C 188.028 132.414 132.414 188.028 132.414 256 C 132.414 323.972 187.586 379.586 256 379.586 Z  M 256 168.166 C 304.552 168.166 343.834 207.448 343.834 256 C 343.834 304.552 304.552 343.834 256 343.834 C 207.448 343.834 168.166 304.552 168.166 256 C 168.166 207.448 207.448 168.166 256 168.166 Z "
-                    fill="#f7d455"
-                />
-                <path
-                    d=" M 274.097 75.034 L 274.097 18.097 C 274.097 7.945 266.152 0 256 0 C 245.848 0 237.903 7.945 237.903 18.097 L 237.903 75.034 C 237.903 85.186 245.848 93.131 256 93.131 C 266.152 93.131 274.097 85.186 274.097 75.034 Z "
-                    fill="#f7d455"
-                />
-                <path
-                    d=" M 237.903 436.966 L 237.903 493.903 C 237.903 504.055 245.848 512 256 512 C 266.152 512 274.097 504.055 274.097 493.903 L 274.097 436.966 C 274.097 426.814 266.152 418.869 256 418.869 C 245.848 418.869 237.903 426.814 237.903 436.966 Z "
-                    fill="#f7d455"
-                />
-                <path
-                    d=" M 396.8 140.8 L 436.966 100.634 C 444.028 93.572 444.028 82.097 436.966 75.034 C 429.903 67.972 418.428 67.972 411.366 75.034 L 371.2 115.2 C 364.138 122.262 364.138 133.738 371.2 140.8 C 374.731 144.331 379.145 146.097 384 146.097 C 388.855 146.097 393.269 144.331 396.8 140.8 L 396.8 140.8 Z "
-                    fill="#f7d455"
-                />
-                <path
-                    d=" M 75.034 436.966 C 78.566 440.497 82.979 442.262 87.834 442.262 C 92.248 442.262 97.103 440.497 100.634 436.966 L 140.8 396.8 C 147.862 389.738 147.862 378.262 140.8 371.2 C 133.738 364.138 122.262 364.138 115.2 371.2 L 75.034 411.366 C 67.972 418.428 67.972 429.903 75.034 436.966 Z "
-                    fill="#f7d455"
-                />
-                <path
-                    d=" M 512 256 C 512 245.848 504.055 237.903 493.903 237.903 L 436.966 237.903 C 426.814 237.903 418.869 245.848 418.869 256 C 418.869 266.152 426.814 274.097 436.966 274.097 L 493.903 274.097 C 503.614 274.097 512 266.152 512 256 Z "
-                    fill="#f7d455"
-                />
-                <path
-                    d=" M 18.097 274.097 L 75.034 274.097 C 85.186 274.097 93.131 266.152 93.131 256 C 93.131 245.848 85.186 237.903 75.034 237.903 L 18.097 237.903 C 7.945 237.903 0 245.848 0 256 C 0 266.152 8.386 274.097 18.097 274.097 Z "
-                    fill="#f7d455"
-                />
-                <path
-                    d=" M 424.166 442.262 C 428.579 442.262 433.434 440.497 436.966 436.966 C 444.028 429.903 444.028 418.428 436.966 411.366 L 396.8 371.2 C 389.738 364.138 378.262 364.138 371.2 371.2 C 364.138 378.262 364.138 389.738 371.2 396.8 L 411.366 436.966 C 414.897 440.497 419.752 442.262 424.166 442.262 L 424.166 442.262 Z "
-                    fill="#f7d455"
-                />
-                <path
-                    d=" M 140.8 140.8 C 147.862 133.738 147.862 122.262 140.8 115.2 L 100.634 75.034 C 93.572 67.972 82.097 67.972 75.034 75.034 C 67.972 82.097 67.972 93.572 75.034 100.634 L 115.2 140.8 C 118.731 144.331 123.145 146.097 128 146.097 C 132.855 146.097 137.269 144.331 140.8 140.8 Z "
-                    fill="#f7d455"
-                />
+const D01: React.FC<IProps> = ({style}) => {
+  return (
+    <svg
+      version="1.1"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+      width="200px"
+      height="200px"
+      viewBox="0 0 64 64"
+      style={{ transform: 'scale(2)', ...(style ? style : {}) }}
+    >
+      <defs>
+        <filter id="blur" width="200%" height="200%">
+          <feGaussianBlur in="SourceAlpha" stdDeviation="3" />
+          <feOffset dx="0" dy="4" result="offsetblur" />
+          <feComponentTransfer>
+            <feFuncA type="linear" slope="0.05" />
+          </feComponentTransfer>
+          <feMerge>
+            <feMergeNode />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+        <style type="text/css">
+          {`
+          @keyframes am-weather-sun {
+            0% {
+              transform: rotate(0deg);
+            }
+            100% {
+              transform: rotate(360deg);
+            }
+          }
+
+          .am-weather-sun {
+            animation-name: am-weather-sun;
+            animation-duration: 9s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+          }
+
+          @keyframes am-weather-sun-shiny {
+            0% {
+              stroke-dasharray: 3px 10px;
+              stroke-dashoffset: 0px;
+            }
+            50% {
+              stroke-dasharray: 0.1px 10px;
+              stroke-dashoffset: -1px;
+            }
+            100% {
+              stroke-dasharray: 3px 10px;
+              stroke-dashoffset: 0px;
+            }
+          }
+
+          .am-weather-sun-shiny line {
+            animation-name: am-weather-sun-shiny;
+            animation-duration: 2s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+          }
+        `}
+        </style>
+      </defs>
+      <g filter="url(#blur)" id="day">
+        <g transform="translate(32,32)">
+          <g className="am-weather-sun am-weather-sun-shiny">
+            <g>
+              <line
+                fill="none"
+                stroke="orange"
+                strokeLinecap="round"
+                strokeWidth="2"
+                transform="translate(0,9)"
+                x1="0"
+                x2="0"
+                y1="0"
+                y2="3"
+              />
             </g>
-        </svg>
-    );
+            {[45, 90, 135, 180, 225, 270, 315].map((rotation, index) => (
+              <g key={index} transform={`rotate(${rotation})`}>
+                <line
+                  fill="none"
+                  stroke="orange"
+                  strokeLinecap="round"
+                  strokeWidth="2"
+                  transform="translate(0,9)"
+                  x1="0"
+                  x2="0"
+                  y1="0"
+                  y2="3"
+                />
+              </g>
+            ))}
+          </g>
+          <circle cx="0" cy="0" fill="orange" r="5" stroke="orange" strokeWidth="2" />
+        </g>
+      </g>
+    </svg>
+  );
 };
 
 export default D01;
