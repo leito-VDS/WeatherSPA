@@ -39,13 +39,13 @@ const Graph: React.FC<GraphProps> = ({ weekData }) => {
     labels,
     datasets: [
       {
-        label: 'Pressure',
+        label: 'Pressure (hPa)',
         data: pressureData,
-        borderColor: 'rgb(0, 0, 0)',
-        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        borderColor: '#141414',
+        backgroundColor: '#141414',
       },
       {
-        label: 'Humidity',
+        label: 'Humidity (%)',
         data: humidityData,
         borderColor: 'rgb(53, 162, 235)',
         backgroundColor: 'rgba(53, 162, 235, 0.5)',

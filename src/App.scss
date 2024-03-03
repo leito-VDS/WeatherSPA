@@ -1,121 +1,170 @@
 body,
 html {
-  margin: 0;
-  padding: 0;
-  height: 100svh;
-  background-color: #fff;
-  // overflow: hidden;
+    margin: 0;
+    padding: 0;
+    height: 100svh;
+    background-color: #fff;
+    color: #141414;
+    // overflow: hidden;
 }
 
 .main {
-  height: 100%;
-  display: flex;
-  flex-direction: row;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
 }
 
 .left {
-  height: 100%;
-  width: 30%;
-  padding: 24px;
-  background-color: #ffffff;
+    height: 100%;
+    width: 30%;
+    padding: 24px;
+    background-color: #ffffff;
 }
 
 .todayCard {
-  height: 85%;
-  .icon {
-    text-align: center;
-    margin-top: 32px;
-    z-index: 1;
-  }
-  .degrees {
-    font-size: 100px;
-    padding-left: 20px;
-  }
-  .numbers {
-    padding-left: 20px;
-    margin-top: 12px;
-    font-size: 20px;
-    &_bottom {
-      padding-left: 20px;
-      margin-top: 10px;
-      font-size: 14px;
+    height: 85%;
+    .icon {
+        text-align: center;
+        margin-top: 32px;
+        z-index: 1;
     }
-    span {
-      opacity: 0.3;
+    .degrees {
+        font-size: 100px;
+        padding-left: 20px;
     }
-  }
-  hr {
-    height: 1px;
-    border: none;
-    margin-top: 12px;
-    background-color: #f6f6f8;
-  }
+    .numbers {
+        padding-left: 20px;
+        margin-top: 12px;
+        font-size: 20px;
+        &_bottom {
+            padding-left: 20px;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        span {
+            opacity: 0.3;
+        }
+    }
+    hr {
+        height: 1px;
+        border: none;
+        margin-top: 12px;
+        background-color: #f6f6f8;
+    }
+}
+
+h2 {
+  font-weight: 500;
 }
 
 .position {
-  width: 70%;
-  margin: 0 auto;
-  margin-top: 12px;
-  display: flex;
-  justify-content: center;
-  color: #141414;
-  gap: 5px;
-  span {
-    font-size: 10px;
-  }
+    width: 70%;
+    margin: 0 auto;
+    margin-top: 12px;
+    display: flex;
+    justify-content: center;
+    color: #141414;
+    gap: 5px;
+    span {
+        font-size: 10px;
+    }
 }
 
 .right {
-  height: 100%;
-  width: 70%;
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  background-color: #f6f6f8;
+    height: 100%;
+    width: 70%;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    background-color: #f6f6f8;
 }
 
 .wrapper {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .cards {
-  display: flex;
-  flex-direction: row;
-  gap: 8px;
-  height: 35%;
-  width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    height: 35%;
+    width: 100%;
 }
 
 .sixpack {
-  display: flex;
-  flex-direction: row;
-  // justify-content: space-between;
-  // align-items: center;
-  // align-content: space-between;
-  // flex-wrap: wrap;
-  width: 100%;
-  height: 65%;
-  .twowrap {
-    height: 100%;
-    width: 40%;
     display: flex;
-    gap: 20px;
-    flex-direction: column;
-  }
-  .sixpack_card {
-    width: 95%;
-    height: 47%;
-    border-radius: 8px;
-    // gap: 20px;
-    background-color: #fff;
-    &_big {
-      height: 100%;
-      width: 60%;
+    flex-direction: row;
+    width: 100%;
+    height: 65%;
+    .twowrap {
+        height: 100%;
+        width: 40%;
+        display: flex;
+        gap: 20px;
+        flex-direction: column;
     }
-  }
+    .sixpack_card {
+        width: 95%;
+        height: 47%;
+        border-radius: 8px;
+        // gap: 20px;
+        background-color: #fff;
+        &_sun {
+            padding-left: 20px;
+            padding-top: 10px;
+            width: 75%;
+            height: 47%;
+            border-radius: 8px;
+            background-color: #fff;
+            display: flex;
+            gap: 10px;
+            flex-direction: column;
+            h3 {
+              opacity: 0.3;
+            }
+            div {
+              display: flex;
+              gap: 10px;
+              font-size: 16px;
+              font-weight: 500;
+              align-items: center;
+              .sign {
+                gap: 0;
+                font-weight: 500;
+              }
+            }
+        }
+        &_wind {
+          padding-left: 20px;
+            padding-top: 10px;
+            width: 75%;
+            height: 47%;
+            border-radius: 8px;
+            background-color: #fff;
+            display: flex;
+            gap: 10px;
+            flex-direction: column;
+            h3 {
+              opacity: 0.3;
+            }
+            div {
+              font-size: 20px;
+              span {
+                font-size: 40px;
+                font-weight: 500;
+              }
+            }
+            .direction {
+              display: flex;
+              gap: 10px;
+            }
+        }
+        &_big {
+            height: 100%;
+            width: 60%;
+        }
+    }
 }
-
-

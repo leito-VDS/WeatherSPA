@@ -24,6 +24,9 @@ import D13 from "./assets/icons/13d";
 import N13 from "./assets/icons/13n";
 import Graph from "./components/Graph";
 import CountUp from "react-countup";
+import Sunrise from "./assets/icons/sunrise";
+import Sunset from "./assets/icons/sunset";
+import Compass from "./assets/icons/compass";
 
 interface OrgData {
     [key: string]: WeatherData[];
@@ -158,7 +161,15 @@ function App() {
         return shuffledArray;
     }
 
+    function degToCompass(num: number): string {
+        const val: number = Math.round((num / 22.5) + 0.5);
+        const arr: string[] = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"];
+        return arr[(val % 16)];
+    }
+
     const WeatherIcon = weatherIcons[data ? data.weather[0].icon : "01n"];
+    const riseTime = new Date(data ? data.sys.sunrise * 1000 : 0);
+    const setTime = new Date(data ? data.sys.sunset * 1000 : 0);
 
     return data ? (
         <div className="main">
@@ -215,8 +226,34 @@ function App() {
                     <h2>Today's Highlights</h2>
                     <div className="sixpack">
                         <div className="twowrap">
-                            <div className="sixpack_card"></div>
-                            <div className="sixpack_card"></div>
+                            <div className="sixpack_card_sun">
+                                <h3>Sunrise & Sunset</h3>
+                                <div>
+                                    <div className="icon">
+                                        <Sunrise width="32px" height="32px" />
+                                    </div>
+                                    <div className="sign">
+                                        <CountUp end={riseTime.getHours()} />:
+                                        <CountUp end={riseTime.getMinutes()} />
+                                    </div>
+                                    AM
+                                </div>
+                                <div>
+                                    <div className="icon">
+                                        <Sunset width="32px" height="32px" />
+                                    </div>
+                                    <div className="sign">
+                                        <CountUp end={setTime.getHours()} />:
+                                        <CountUp end={setTime.getMinutes()} />
+                                    </div>
+                                    PM
+                                </div>
+                            </div>
+                            <div className="sixpack_card_wind">
+                                <h3>Wind Status</h3>
+                                <div><span><CountUp end={data.wind.speed * 3.6} /> </span>km/h</div>
+                                <div className="direction"><Compass width="20px" height="20px"/> {degToCompass(data.wind.deg)}</div>
+                            </div>
                         </div>
                         <div className="sixpack_card_big">
                             <Graph weekData={organizeDataByDays(weekData)} />
