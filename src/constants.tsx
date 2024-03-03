@@ -9,6 +9,7 @@ export interface WeatherData {
         lat: number;
     };
     dt: number;
+    dt_txt: string;
     id: number;
     main: {
         temp: number;
@@ -16,12 +17,10 @@ export interface WeatherData {
         temp_min: number;
         temp_max: number;
         pressure: number;
+        humidity: number;
         // и так далее, в зависимости от того, какие данные вам нужны
     };
     name: string;
-    rain: {
-        "1h": number;
-    };
     sys: {
         type: number;
         id: number;
@@ -32,8 +31,13 @@ export interface WeatherData {
     timezone: number;
     visibility: number;
     weather: {
-        // в зависимости от структуры данных в этом объекте
-    }[];
+        [index: number]: {
+            description: string;
+            icon: string;
+            id: number;
+            main: string;
+        };
+    };
     wind: {
         speed: number;
         deg: number;
@@ -41,7 +45,7 @@ export interface WeatherData {
     };
 }
 
-interface WeatherInfo {
+export interface WeatherInfo {
     dt: number;
     temp: number;
     feels_like: number;
@@ -74,5 +78,14 @@ export interface WeekWeatherData {
         name: string;
         country: string;
     };
-    list: WeatherInfo[];
+    list: WeatherData[];
+}
+
+export interface Icon {
+    width?: string;
+    height?: string;
+}
+
+export interface IProps extends Icon {
+    style?: React.CSSProperties;
 }

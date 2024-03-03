@@ -1,5 +1,7 @@
 .search {
     margin: 0 auto;
+    position: relative;
+    z-index: 2;
     height: 6%;
     display: flex;
     flex-direction: row;
@@ -8,7 +10,7 @@
     width: 80%;
 }
 input {
-    background-color: #fdfdfd;
+    background-color: #f6f6f8;
     border: none;
     border-radius: 20px;
     font-size: 15px;
@@ -28,7 +30,7 @@ button {
     border-radius: 50%;
     margin: 0;
     padding: 0;
-    background-color: #fdfdfd;
+    background-color: #f6f6f8;
     border: none;
     transition: 0.4s;
     &:hover {

@@ -1,9 +1,7 @@
-interface PointWH {
-    width: string;
-    height: string;
-}
+import { Icon } from "../../constants";
 
-const Point = ({ width, height }: PointWH) => {
+
+const Point = ({ width, height }: Icon) => {
     return (
         <svg
             fill="#141414"

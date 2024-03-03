@@ -1,9 +1,6 @@
-interface PointWH {
-    width: string;
-    height: string;
-}
+import { Icon } from "../../constants";
 
-const Search = ({ width, height }: PointWH) => {
+const Search = ({ width, height }: Icon) => {
     return (
         <svg
             width={width}
