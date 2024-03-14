@@ -74,8 +74,8 @@ function WeatherCard({ data }: WeatherCardProps): JSX.Element {
             <h2>{daysOfWeek[new Date(data[0].dt * 1000).getUTCDay()]}</h2>
             <div className={styles.dataList}>
                 <div className={styles.extendedData}>
-                    <span>Temp: {Math.round(data[id].main.temp * 10) / 10}°</span>
-                    <span>Feels: {Math.round(data[id].main.feels_like * 10) / 10}°</span>
+                    <span>Temp: {Math.round(data[id].main.temp)}°</span>
+                    <span>Feels: {Math.round(data[id].main.feels_like)}°</span>
                     <span>Hum: {Math.round(data[id].main.humidity)}%</span>
                     <span>Weather: {data[id].weather[0].description}</span>
                 </div>
@@ -83,7 +83,7 @@ function WeatherCard({ data }: WeatherCardProps): JSX.Element {
                     <div className={styles.icon}>
                         <WeatherIcon style={{ transform: `scale(${scaleValue})`, width: "80px", height: "80px"}} />
                     </div>
-                    <div>{Math.round(maxTemp * 10) / 10}° <span>{Math.round(minTemp * 10) / 10}°</span></div>
+                    <div>{Math.round(maxTemp)}° <span>{Math.round(minTemp)}°</span></div>
                 </div>
             </div>
         </div>

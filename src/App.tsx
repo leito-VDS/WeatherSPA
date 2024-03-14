@@ -210,7 +210,7 @@ function App() {
                             data.weather[0].description.slice(1)}
                     </div>
                     <div className="numbers_bottom">
-                        Feels like {Math.round(data.main.feels_like * 10) / 10}
+                        Feels like {Math.round(data.main.feels_like)}
                         °C
                     </div>
                 </div>
