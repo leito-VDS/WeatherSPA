@@ -162,9 +162,26 @@ function App() {
     }
 
     function degToCompass(num: number): string {
-        const val: number = Math.round((num / 22.5) + 0.5);
-        const arr: string[] = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"];
-        return arr[(val % 16)];
+        const val: number = Math.round(num / 22.5 + 0.5);
+        const arr: string[] = [
+            "N",
+            "NNE",
+            "NE",
+            "ENE",
+            "E",
+            "ESE",
+            "SE",
+            "SSE",
+            "S",
+            "SSW",
+            "SW",
+            "WSW",
+            "W",
+            "WNW",
+            "NW",
+            "NNW",
+        ];
+        return arr[val % 16];
     }
 
     const WeatherIcon = weatherIcons[data ? data.weather[0].icon : "01n"];
@@ -179,7 +196,6 @@ function App() {
                     <div className="icon">
                         <WeatherIcon />
                     </div>
-                    {/* <div className="degrees"><CountUp end={data.main.temp}/></div> */}
                     <div className="degrees">
                         <CountUp end={Math.round(data.main.temp)} />
                         °C
@@ -199,11 +215,11 @@ function App() {
                     </div>
                 </div>
                 <div className="position">
-                    <Point width="16px" height="16px" />
-                    <div style={{ height: "fit-content" }}>
-                        {data.name}, <span>{data.sys.country}</span>
+                        <Point width="16px" height="16px" />
+                        <div style={{ height: "fit-content" }}>
+                            {data.name}, <span>{data.sys.country}</span>
+                        </div>
                     </div>
-                </div>
             </div>
             <div className="right">
                 <div className="wrapper">
@@ -251,16 +267,21 @@ function App() {
                             </div>
                             <div className="sixpack_card_wind">
                                 <h3>Wind Status</h3>
-                                <div><span><CountUp end={data.wind.speed * 3.6} /> </span>km/h</div>
-                                <div className="direction"><Compass width="20px" height="20px"/> {degToCompass(data.wind.deg)}</div>
+                                <div>
+                                    <span>
+                                        <CountUp end={data.wind.speed * 3.6} />{" "}
+                                    </span>
+                                    km/h
+                                </div>
+                                <div className="direction">
+                                    <Compass width="20px" height="20px" />{" "}
+                                    {degToCompass(data.wind.deg)}
+                                </div>
                             </div>
                         </div>
                         <div className="sixpack_card_big">
                             <Graph weekData={organizeDataByDays(weekData)} />
                         </div>
-                        {/* <div className="sixpack_card"></div>
-                            <div className="sixpack_card"></div>
-                            <div className="sixpack_card"></div> */}
                     </div>
                 </div>
             </div>

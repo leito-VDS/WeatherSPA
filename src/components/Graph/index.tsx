@@ -1,7 +1,7 @@
 import React from 'react';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import { WeekWeatherData, WeatherData } from '../../constants';
+import { WeatherData } from '../../constants';
 
 interface GraphProps {
   [key: string]: WeatherData[];
@@ -31,15 +31,14 @@ const Graph: React.FC<GraphProps> = ({ weekData }) => {
   // Take the first 8 elements from the list
   const weatherDataSubset: WeatherData[] = Object.values(weekData).flat().slice(0, 8);
   const labels = weatherDataSubset.map((item) => item.dt_txt.split(" ")[1].slice(0, -3));
-  console.log(weatherDataSubset)
-  const pressureData = weatherDataSubset.map((item) => item.main.pressure);
+  const pressureData = weatherDataSubset.map((item) => item.main.temp);
   const humidityData = weatherDataSubset.map((item) => item.main.humidity);
 
   const chartData = {
     labels,
     datasets: [
       {
-        label: 'Pressure (hPa)',
+        label: 'Temperature curve',
         data: pressureData,
         borderColor: '#141414',
         backgroundColor: '#141414',
