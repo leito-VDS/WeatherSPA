@@ -280,7 +280,7 @@ function App() {
                             </div>
                         </div>
                         <div className="sixpack_card_big">
-                            <Graph weekData={organizeDataByDays(weekData)} />
+                            <Graph weekData={weekData} />
                         </div>
                     </div>
                 </div>

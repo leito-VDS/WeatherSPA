@@ -1,10 +1,10 @@
 import React from 'react';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import { WeatherData } from '../../constants';
+import { WeekWeatherData, WeatherData } from '../../constants';
 
 interface GraphProps {
-  [key: string]: WeatherData[];
+  weekData?: WeekWeatherData;
 }
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
@@ -24,14 +24,14 @@ const options = {
 
 const Graph: React.FC<GraphProps> = ({ weekData }) => {
   // Check if weekData is defined and has the expected structure
-  if (!weekData) {
+  if (!weekData || !weekData.list || !weekData.list.length) {
     return null; // or handle the case where data is missing or incorrect
   }
 
   // Take the first 8 elements from the list
-  const weatherDataSubset: WeatherData[] = Object.values(weekData).flat().slice(0, 8);
+  const weatherDataSubset: WeatherData[] = weekData.list.slice(0, 8);
   const labels = weatherDataSubset.map((item) => item.dt_txt.split(" ")[1].slice(0, -3));
-  const pressureData = weatherDataSubset.map((item) => item.main.temp);
+  const temperatureData = weatherDataSubset.map((item) => item.main.temp);
   const humidityData = weatherDataSubset.map((item) => item.main.humidity);
 
   const chartData = {
@@ -39,7 +39,7 @@ const Graph: React.FC<GraphProps> = ({ weekData }) => {
     datasets: [
       {
         label: 'Temperature curve',
-        data: pressureData,
+        data: temperatureData,
         borderColor: '#141414',
         backgroundColor: '#141414',
       },

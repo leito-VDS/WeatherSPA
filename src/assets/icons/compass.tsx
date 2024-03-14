@@ -1,4 +1,3 @@
-import React from "react";
 import { Icon } from "../../constants";
 const Compass = ({ width, height }: Icon) => {
     return (
