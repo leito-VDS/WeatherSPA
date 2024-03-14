@@ -48,4 +48,16 @@
     }
 }
 
-
+@media (max-width: 770px) {
+    .cardWrapper {
+        &:hover {
+            .mainData {
+                display: flex;
+            }
+            .extendedData {
+                display: none;
+            }
+            transform: scale(1);
+        }
+    }
+}

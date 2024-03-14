@@ -215,73 +215,71 @@ function App() {
                     </div>
                 </div>
                 <div className="position">
-                        <Point width="16px" height="16px" />
-                        <div style={{ height: "fit-content" }}>
-                            {data.name}, <span>{data.sys.country}</span>
-                        </div>
+                    <Point width="16px" height="16px" />
+                    <div style={{ height: "fit-content" }}>
+                        {data.name}, <span>{data.sys.country}</span>
                     </div>
+                </div>
             </div>
             <div className="right">
-                <div className="wrapper">
-                    <h2>Future forecast</h2>
-                    <div className="cards">
-                        {weekData
-                            ? shuffleArray(daysOfWeek).map((day) => {
-                                  const organizedData =
-                                      organizeDataByDays(weekData);
+                <h2>Future forecast</h2>
+                <div className="cards">
+                    {weekData
+                        ? shuffleArray(daysOfWeek).map((day) => {
+                              const organizedData =
+                                  organizeDataByDays(weekData);
 
-                                  return organizedData[day].length > 2 ? (
-                                      <WeatherCard
-                                          key={day}
-                                          data={organizedData[day]}
-                                      />
-                                  ) : null;
-                              })
-                            : "There is no valuable data"}
+                              return organizedData[day].length > 2 ? (
+                                  <WeatherCard
+                                      key={day}
+                                      data={organizedData[day]}
+                                  />
+                              ) : null;
+                          })
+                        : "There is no valuable data"}
+                </div>
+                <h2>Today's Highlights</h2>
+                <div className="sixpack">
+                    <div className="twowrap">
+                        <div className="sixpack_card_sun">
+                            <h3>Sunrise & Sunset</h3>
+                            <div>
+                                <div className="icon">
+                                    <Sunrise width="32px" height="32px" />
+                                </div>
+                                <div className="sign">
+                                    <CountUp end={riseTime.getHours()} />:
+                                    <CountUp end={riseTime.getMinutes()} />
+                                </div>
+                                AM
+                            </div>
+                            <div>
+                                <div className="icon">
+                                    <Sunset width="32px" height="32px" />
+                                </div>
+                                <div className="sign">
+                                    <CountUp end={setTime.getHours()} />:
+                                    <CountUp end={setTime.getMinutes()} />
+                                </div>
+                                PM
+                            </div>
+                        </div>
+                        <div className="sixpack_card_wind">
+                            <h3>Wind Status</h3>
+                            <div>
+                                <span>
+                                    <CountUp end={data.wind.speed * 3.6} />{" "}
+                                </span>
+                                km/h
+                            </div>
+                            <div className="direction">
+                                <Compass width="20px" height="20px" />{" "}
+                                {degToCompass(data.wind.deg)}
+                            </div>
+                        </div>
                     </div>
-                    <h2>Today's Highlights</h2>
-                    <div className="sixpack">
-                        <div className="twowrap">
-                            <div className="sixpack_card_sun">
-                                <h3>Sunrise & Sunset</h3>
-                                <div>
-                                    <div className="icon">
-                                        <Sunrise width="32px" height="32px" />
-                                    </div>
-                                    <div className="sign">
-                                        <CountUp end={riseTime.getHours()} />:
-                                        <CountUp end={riseTime.getMinutes()} />
-                                    </div>
-                                    AM
-                                </div>
-                                <div>
-                                    <div className="icon">
-                                        <Sunset width="32px" height="32px" />
-                                    </div>
-                                    <div className="sign">
-                                        <CountUp end={setTime.getHours()} />:
-                                        <CountUp end={setTime.getMinutes()} />
-                                    </div>
-                                    PM
-                                </div>
-                            </div>
-                            <div className="sixpack_card_wind">
-                                <h3>Wind Status</h3>
-                                <div>
-                                    <span>
-                                        <CountUp end={data.wind.speed * 3.6} />{" "}
-                                    </span>
-                                    km/h
-                                </div>
-                                <div className="direction">
-                                    <Compass width="20px" height="20px" />{" "}
-                                    {degToCompass(data.wind.deg)}
-                                </div>
-                            </div>
-                        </div>
-                        <div className="sixpack_card_big">
-                            <Graph weekData={weekData} />
-                        </div>
+                    <div className="sixpack_card_big">
+                        <Graph weekData={weekData} />
                     </div>
                 </div>
             </div>
