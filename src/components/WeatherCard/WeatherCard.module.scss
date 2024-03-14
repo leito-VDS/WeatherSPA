@@ -51,6 +51,7 @@
 
 @media (max-width: 770px) {
     .cardWrapper {
+        width: 20%;
         &:hover {
             .mainData {
                 display: flex;
